@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js" integrity="sha512-nKZDK+ztK6Ug+2B6DZx+QtgeyAmo9YThZob8O3xgjqhw2IVQdAITFasl/jqbyDwclMkLXFOZRiytnUrXk/PM6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>Academlo Store - Joseph V.</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/main.js" defer></script>
+</head>
+<body>
+
+    <div class="precarga">
+        
+        <svg fill="#9adde0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.92 56.48" class="load__gif">
+            <title>Academlo Logo</title>
+            <g>
+                <g>
+                    <path d="M24.45,56.48,0,42.36V14.12L24.46,0,48.92,14.12V42.36ZM1.89,41.26l22.56,13L47,41.26v-26l-22.56-13-22.56,13Z">
+                    </path>
+                    <path d="M28.58,15.39H25.16L35.78,36H31.49L20.67,15.71,8.23,38.82H18.94l3-5.43h-3.4l-1.47,2.54h-4l2.69-5.09H25.85l4.28,8H40.67ZM17.23,28.21l3.57-6.6,3.57,6.6Z">
+                    </path>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <header>
+        <nav class="navbar container">
+            <a href="#casa" class="navbar_logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.92 56.48" class="nav_logo-icon">
+                    <title>Academlo Logo</title>
+                    <g>
+                        <g>
+                            <path d="M28.58,15.39H25.16L35.78,36H31.49L20.67,15.71,8.23,38.82H18.94l3-5.43h-3.4l-1.47,2.54h-4l2.69-5.09H25.85l4.28,8H40.67ZM17.23,28.21l3.57-6.6,3.57,6.6Z">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+                <span>STORE</span>
+            </a>
+
+            <ul class="navbar_menu" id="navbarMenu">
+                <li>
+                    <a class="link__active" href="#casa">Home</a>
+                </li>
+                <li>
+                    <a href="#products" class="">Products</a>
+                </li>
+            </ul>
+
+            <div class="navbar__icons">
+                <i class="bx bx-moon" id="iconTheme"></i>
+                <i class='bx bx-cart' >
+                    <span class="amountProducts"></span>
+                </i>
+                
+                <i class="bx bxs-dashboard handleIconNavbar"></i>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="casa" id="casa">
+            <div class="conte">
+                <h3 class="title__conte">New Sweatshirt COLLECTIONS 2024</h3>
+                <p class="parrafo">
+                    Latest arrival of the new Hanes Midweight Crewneck sweatshirt
+                    imported from the 2022 series, with a modern design.
+                </p>
+                <p class="price__conte">$14.00</p>
+                <a class="btn__more" href="#productos" >Show more</a>
+            </div>
+            <div class="header">
+                <div class="img-header-home">
+                    <img src="./assets/img/sweater2.png" alt="image shirt-academlo">
+                </div>
+            </div>
+
+        </section>
+
+        <section id="productos" class="content_products">
+            <div class="filtros">
+                <div class="filtro filtro--activo mixitup-control-active" data-filter="all">
+                    <p>Show all</p>
+                    <p>Show all products</p>
+                </div>
+                <div class="filtro" data-filter=".shirt">
+                    <p>Shirt</p>
+                    <p>7 products</p>
+                </div>
+                <div class="filtro" data-filter=".hoddie">
+                    <p>Hoddie</p>
+                    <p>6 products</p>
+                </div>
+                <div class="filtro" data-filter=".sweater">
+                    <p>Sweater</p>
+                    <p>5 products</p>
+                </div>
+
+            </div>
+            <div class="products"></div>
+        </section>
+
+    </main>
+
+
+
+    <div class="cart">
+        <div class="cart__products"></div>
+        <div class="cart__total">
+            <div class="cart__total--info">
+                <span class="info__amount"></span>
+                <span class="info__total"></span>
+            </div>
+
+            <button class="btn btn__buy">Comprar</button>
+        </div>
+    </div>
+
+    <div class="modal">
+    
+    </div>
+
+
+
+
+    <footer>
+        <section class="footer_contain">
+            <div class="info-foo">
+                <h3 class="title-foo">Our Information</h3>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://www.google.es/maps/place/Valera,+Trujillo/@9.3212129,-70.6560384,13z/data=!3m1!4b1!4m6!3m5!1s0x8e6328692ebdd3d5:0xd3d8efa5fb790d11!8m2!3d9.3191109!4d-70.6032995!16zL20vMDdrbjh4?hl=es&entry=ttu">Valera - Venezuela</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="info-foo">
+                <h3 class="title-foo">About Us</h3>
+                    <ul>
+                        <li>
+                            <a href="#">Support Center</a>
+                        </li>
+                        <li>
+                            <a href="#">Customer Support</a>
+                        </li>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Copy Right</a>
+                        </li>
+                    </ul>
+            </div>
+            <div class="info-foo">
+                <h3 class="title-foo">Product</h3>
+                    <ul>
+                        <li>
+                           <a href="#productos">Hoddies</a> 
+                        </li>
+                        <li>
+                           <a href="#productos">Shirts</a> 
+                        </li>
+                        <li>
+                           <a href="#productos">Sweatshirts</a> 
+                        </li>
+                    </ul>   
+            </div>
+            <div class="info-foo">
+                <h3 class="title-foo">Social</h3>
+                    <ul class="footer_link-social">
+                        <li>
+                            <a target="_blank" href="https://www.linkedin.com/in/joseph-anthony-v%C3%A1squez-alvarez-841ab120a/"><i class="bx bxl-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.instagram.com/joseph.vasquezz/"><i class="bx bxl-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="bx bxl-facebook"></i></a>
+                        </li>
+                    </ul>
+                
+            </div>
+        </section>
+        <div class="by">
+
+            <p>By <b>Joseph Anthony Vásquez Alvarez</b>, correo: <b>josephvasquezunefa@gmail.com</b> y el &#128073 <a href="#">repositorio</a> &#128072</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>
