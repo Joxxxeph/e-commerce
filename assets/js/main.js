@@ -401,8 +401,8 @@ function handleTheme(db) {
 
 function animationNav() {
     const header = document.querySelector("header")
-    const navLink = document.querySelector("#home--link")
-    const productLink = document.querySelector("#productos--link")
+    const navLink = document.querySelector(".home--link")
+    const productLink = document.querySelector(".productos--link")
 
     window.addEventListener("scroll", function () {
         header.classList.toggle("nav__show", window.scrollY > 0)

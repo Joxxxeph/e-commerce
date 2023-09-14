@@ -40,10 +40,33 @@ body.dark {
     font-family: 'Roboto';
 }
 
+html {
+    scroll-behavior: smooth
+}
+
+
+
 body {
     background-color: var(--body-color);
     transition: color .5s, background-color .5s;
 }
+
+body::-webkit-scrollbar-track {
+    background: var(--container-color);
+    border-radius: 10px
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
+}
+
+
+body::-webkit-scrollbar-thumb {
+    background: var(--first-color);
+    border-radius: 10px
+}
+
 img {
     width: 100%;
     display: block;
@@ -70,7 +93,7 @@ ul {
 }
 
 .precarga {
-    z-index: 1;
+    z-index: var(--z-modalproduct);
     height: 100vh;
     width: 100%;
     background-color: var(--body-color);
@@ -111,6 +134,7 @@ header {
     width: 100%;
     padding: 0 1rem;
     position: fixed;
+    z-index: var(--z-content-cart);
     transition: background-color .5s, height .5s, box-shadow .5s;
 }
 
@@ -123,6 +147,7 @@ header > nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    gap: 1.5rem;
 }
 
 header > nav > i {
@@ -173,18 +198,22 @@ header > nav > i {
     display: none;
 }
 
+.linkk {
+    color: var(--first-color);
+}
+
 .menu__nav {
-    background-color: var(--container-color);
-    position: fixed;
-    left: 110%;
-    top: 0;
+    background-color: transparent;
+    position: static;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    gap: 1rem;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    transition: left .5s
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .icon__nav {
@@ -551,7 +580,7 @@ header > nav > i {
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
-
+    z-index: var(--z-content-cart);
     transition: right .3s;
 }
 .cart .bx-x {
