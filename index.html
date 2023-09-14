@@ -8,7 +8,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Academlo Store - Joseph V.</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/main.js" defer type="module"></script>
 </head>
 <body>
 
@@ -29,8 +29,8 @@
 
     <header>
         <nav class="navbar container">
-            <a href="#casa" class="navbar_logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.92 56.48" class="nav_logo-icon">
+            <a href="#casa" class="log__nav">
+                <svg class="icon-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.92 56.48" >
                     <title>Academlo Logo</title>
                     <g>
                         <g>
@@ -42,22 +42,22 @@
                 <span>STORE</span>
             </a>
 
-            <ul class="navbar_menu" id="navbarMenu">
+            <ul class="menu__nav">
                 <li>
-                    <a class="link__active" href="#casa">Home</a>
+                    <a class="home--link linkk" href="#casa">Home</a>
                 </li>
                 <li>
-                    <a href="#products" class="">Products</a>
+                    <a href="#productos" class="productos--link ">Products</a>
                 </li>
             </ul>
 
-            <div class="navbar__icons">
-                <i class="bx bx-moon" id="iconTheme"></i>
+            <div class="icon__nav">
+                <i class="bx bx-moon bx-sun" id="theme"></i>
                 <i class='bx bx-cart' >
                     <span class="amountProducts"></span>
                 </i>
                 
-                <i class="bx bxs-dashboard handleIconNavbar"></i>
+                <i class="bx bx-menu hamburguer"></i>
             </div>
 
         </nav>
@@ -110,6 +110,7 @@
 
 
     <div class="cart">
+        <i class="bx bx-x"></i>
         <div class="cart__products"></div>
         <div class="cart__total">
             <div class="cart__total--info">

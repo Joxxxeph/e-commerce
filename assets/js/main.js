@@ -1,3 +1,5 @@
+
+
 async function getProducts() {
     try {
         const data = await fetch(
@@ -24,15 +26,15 @@ function printProducts(db) {
                     <img src="${image}" alt="imagen ${image}">
                 </div>
                 <div class="product__info">    
-                <h3>
-                $${price}
-                ${
-                    quantity 
-                    ? `<i class='bx bx-plus' id="${id}"></i> <span class="stock"><b>Stock: ${quantity}</b></span>` 
-                    : "<span class= soldOut'>Sold out</span>"
-                }
-                </h3>
-                <h4 class="abrir__modal" id="${id}">${name}</h4>
+                    <h3>
+                    $${price}
+                    ${
+                        quantity 
+                        ? `<i class='bx bx-plus' id="${id}"></i> <span class="stock"><b>Stock: ${quantity}</b></span>` 
+                        : "<span class= 'soldOut'>Sold out</span>"
+                    }
+                    </h3>
+                    <h4 class="abrir__modal" id="${id}">${name}</h4>
                 </div>
             </div>
         `;
@@ -44,9 +46,14 @@ function printProducts(db) {
 function handleShowCart() {
     const iconCartHTML = document.querySelector(".bx-cart");
     const cartHTML = document.querySelector(".cart");
+    const cerrar = document.querySelector(".bx-x")
 
     iconCartHTML.addEventListener("click", function(){
-        cartHTML.classList.toggle("cart__show");
+        cartHTML.classList.add("cart__show");
+        cerrar.addEventListener("click", ()=> {
+            cartHTML.classList.remove("cart__show")
+        })
+
     });
 }
 
@@ -128,13 +135,13 @@ function handleProductsCart(db) {
                 (product) => product.id === id
             );
 
-            if (productFind.quantity === db.cart[productFind.id].amount) {
+            if (productFind.quantity === db.cart[productFind.id].amount) 
                 return Swal.fire({
                     icon: 'warning',
                     title: 'Oops...',
                     text: 'No tenemos más disponibles!',
                   });                
-            }
+
             db.cart[id].amount++;        
         }
         if (e.target.classList.contains("bx-minus")) {
@@ -283,7 +290,7 @@ function precarga() {
     }, 1000);
 }
 
-function modalOpen(db) {
+function modalPrint(db) {
        
     const modal = document.querySelector(".modal");
     const contentProducts = document.querySelector(".products");
@@ -298,34 +305,113 @@ function modalOpen(db) {
             if (ide === id) {
                 html = ` <div class="product__modal">
                             <i class="close bx bxs-x-circle"></i>
-                            <div class="product__modal--img">
+                            <div class="modal--img">
                                 <img src="${image}" alt="image ${image}"></img>
                             </div>
-                            <h3 class="product__modal--name">
+                            <h3 class="modal--name">
                                 ${name} - <span>${category}</span>
                             </h3>
-                            <p class="modal__product--p">
+                            <p class="modal--p">
                                 ${description}
                             </p>
-                            <div class="modal__product--info">
+                            <div class="modal--info">
                                 <h3>$${price}.00
                                 ${quantity ? `<i id="${id}" class="bx bx-plus"></i>`: ""}                    
                                 </h3>
-                                ${quantity ? `<span class="product__info--stock--modal">Stock: ${quantity}</span><i id="${id}"` : `<span class="product__soldOut">Sold Out</span>`}
+                                ${quantity ? `<span class="stock"><b>Stock: ${quantity}</b></span><i id="${id}"` : `<span class="soldOut">Sold Out</span>`}
                             </div>
                         </div>`
+                    
             }      
+            
 
         }
         modal.innerHTML = html;
         modal.classList.add("modal--show");
 
-        console.log(e.target.classList.contains("product__modal"))
+            const close = document.querySelector(".close");
+
+            close.addEventListener("click", function() {
+                modal.classList.remove("modal--show");
+            })
         
         }
     });
 
 }
+
+
+function addToCartFromModal(db) {
+    const addProduct = document.querySelector(".modal")
+
+    addProduct.addEventListener("click", (e)=> {
+        if(e.target.classList.contains("bx-plus")){
+            const id = Number(e.target.id);
+            const productFind = db.products.find(
+                (product) => product.id === id
+            );
+            
+            if (db.cart[productFind.id]){
+                if (productFind.quantity === db.cart[productFind.id].amount)
+                    return Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'No tenemos más disponibles!',
+                      });                   
+                db.cart[productFind.id].amount++;
+            } else {
+                db.cart[productFind.id] = { ...productFind, amount: 1};
+            }
+            
+            window.localStorage.setItem("cart", JSON.stringify(db.cart));
+            printProductsCart(db);
+            priceTotal(db);
+            handlePrintAmount(db);
+
+        }
+    })
+    
+}
+
+function handleTheme(db) {
+    const bodyHTML = document.querySelector("body");
+    const iconTheme = document.querySelector("#theme");
+
+    iconTheme.addEventListener("click", ()=> {
+        iconTheme.classList.toggle("bx-sun");
+
+        bodyHTML.classList.toggle("dark");
+        if (bodyHTML.classList.contains("dark")) {
+            localStorage.setItem('dark-mode', 'true');
+        } else {
+            localStorage.setItem('dark-mode', 'false');
+        }
+
+    });
+
+    if (localStorage.getItem('dark-mode') === 'true') {
+        bodyHTML.classList.add("dark");
+        iconTheme.classList.remove("bx-sun");
+
+    } else {
+        bodyHTML.classList.remove("dark");
+    }
+    
+}
+
+function animationNav() {
+    const header = document.querySelector("header")
+    const navLink = document.querySelector("#home--link")
+    const productLink = document.querySelector("#productos--link")
+
+    window.addEventListener("scroll", function () {
+        header.classList.toggle("nav__show", window.scrollY > 0)
+        productLink.classList.toggle("linkk", window.scrollY > 520)
+
+        navLink.classList.toggle("linkk", window.scrollY < 580)
+    });
+}
+
 
 
 
@@ -338,7 +424,7 @@ async function main() {
             JSON.parse(window.localStorage.getItem("products")) || 
             (await getProducts()),
 
-        cart: JSON.parse(window.localStorage.getItem('cart')) || {}
+        cart: JSON.parse(window.localStorage.getItem('cart')) || {},
     } 
 
     printProducts(db);
@@ -361,8 +447,13 @@ async function main() {
 
     precarga();
     
-    modalOpen(db);
+    modalPrint(db);
 
+    addToCartFromModal(db);
+
+    handleTheme(db);
+
+    animationNav();
    
 
 
