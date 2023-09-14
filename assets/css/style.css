@@ -162,6 +162,7 @@ header > nav > i {
 .bx-moon, .bx-cart, .bx-menu {
     font-size: 1.3rem;
     cursor: pointer;
+    color: var(--title-color);
 }
 
 .amountProducts {
@@ -214,6 +215,7 @@ header > nav > i {
     align-items: center;
     font-size: 1rem;
     font-weight: 600;
+    color: var(--title-color);
 }
 
 .icon__nav {
@@ -235,6 +237,7 @@ header > nav > i {
     background-color: var(--container-color);
     height: calc(var(--h-header + 1rem));
     box-shadow: var(--shadow-general);
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 }
 
 
@@ -486,6 +489,10 @@ header > nav > i {
     transition: .3s;
 }
 
+.bx-x {
+    color: var(--title-color);
+}
+
 .product__modal {
     position: relative;
     padding: 1rem;
@@ -505,8 +512,12 @@ header > nav > i {
     right: .8rem;
     cursor: pointer;
     position: absolute;
+    color: var(--title-color);
+    transition: color .2s;
 }
-
+.close:hover {
+    color: var(--first-color);
+}
 
 .modal--name {
     color: var(--title-color);
@@ -520,12 +531,12 @@ header > nav > i {
 }
 
 .modal--info {
+    padding: .8rem;
     display: flex;
+    height: 60px;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
-    width: 140%;
-    height: 60px;
-    padding: .8rem;
 }
 
 .modal--info .bx-plus {
@@ -551,6 +562,7 @@ header > nav > i {
     border-radius: 5px;
     font-size: .8rem;
     font-weight: bold;
+    
 }
 
 .modal--info h3 {
@@ -561,9 +573,8 @@ header > nav > i {
 }
 
 .modal--info .stock {
-    padding: 0;
+    padding-left: 9rem;   
 }
-
 
 
 

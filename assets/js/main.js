@@ -405,7 +405,10 @@ function animationNav() {
     const productLink = document.querySelector(".productos--link")
 
     window.addEventListener("scroll", function () {
+        
+       
         header.classList.toggle("nav__show", window.scrollY > 0)
+        
         productLink.classList.toggle("linkk", window.scrollY > 520)
 
         navLink.classList.toggle("linkk", window.scrollY < 580)
