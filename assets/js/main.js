@@ -216,6 +216,11 @@ function handleTotal(db) {
           });
 
         const response = confirm("¿Estas seguro de realizar esta compra?");
+        Swal.fire({
+            icon: 'success',
+            title: 'Genial',
+            text: 'Muchas gracias por tu compra!',
+          })
         if (!response) return;
 
         const currentProducts = [];
@@ -415,6 +420,45 @@ function animationNav() {
     });
 }
 
+function handleShowMenu() {
+    const hamburguerHTML = document.querySelector(".hamburguer");
+    const menuHTML = document.querySelector(".menu__nav");
+    const casaHTML = document.querySelector(".casa");
+    const productsHTML = document.querySelector(".content_products");
+
+    function menuToggles() {
+        hamburguerHTML.classList.toggle("bx-menu")
+        hamburguerHTML.classList.toggle("bx-x")
+    }
+
+    hamburguerHTML.addEventListener("click", function () {
+        menuHTML.classList.toggle("menu__show")
+
+        if (hamburguerHTML.classList.contains("hamburguer")) {
+            menuToggles();
+        }
+    });
+
+    productsHTML.addEventListener("click", function () {
+        productsHTML.classList.add("linkk")
+        casaHTML.classList.remove("linkk")
+        menuHTML.classList.toggle("menu__show")
+        hamburguerHTML.classList.toggle("bx-menu")
+        hamburguerHTML.classList.remove("bx-x")
+
+    });
+
+    casaHTML.addEventListener("click", function () {
+        productsHTML.classList.remove("linkk")
+        casaHTML.classList.add("linkk")
+        menuHTML.classList.toggle("menu__show")
+        hamburguerHTML.classList.toggle("bx-menu")
+        hamburguerHTML.classList.remove("bx-x")
+    });
+
+    
+}
+
 
 
 
@@ -457,6 +501,8 @@ async function main() {
     handleTheme(db);
 
     animationNav();
+
+    handleShowMenu();
    
 
 
